@@ -1,4 +1,4 @@
-package com.zed.demo.pojo;
+package com.example.demo.pojo;
 
 public class Operation{
     private String StudentID;

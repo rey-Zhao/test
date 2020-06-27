@@ -1,20 +1,14 @@
-package com.zed.demo.pojo;
+package com.example.demo.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @ApiModel("实习表")
 @Data
 
-public class interinfo {
+public class Interinfo {
 
     @ApiModelProperty(value ="学生ID")
         private String StudentID;
@@ -38,7 +32,7 @@ public class interinfo {
         private String AccAddress;
 
 
-    public interinfo(String studentID, String name, String regStatus, String interStatus,
+    public Interinfo(String studentID, String name, String regStatus, String interStatus,
                      String companyName, String comAddress, String startTime, String endTime,
                      String accStatus, String accAddress) {
         StudentID = studentID;

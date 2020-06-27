@@ -1,50 +1,40 @@
-package com.zed.demo.pojo;
+package com.example.demo.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
 
-
-@ApiModel("学生表")
+@ApiModel("管理员表")
 @Data
-
-
-public class User {
-    @ApiModelProperty(value ="学生ID")
-    private  String StudentID;
+public class Admin {
+    @ApiModelProperty(value ="工号")
+    private  String TeacherID;
     @ApiModelProperty("密码")
     private  String password;
     @ApiModelProperty("姓名")
     private String name;
-    @ApiModelProperty("年级")
-    private String Grade;
     @ApiModelProperty("学院")
     private String Academy;
     @ApiModelProperty("性别")
     private String Sex;
     @ApiModelProperty("电话号码")
-    private String phoneNumber;
+    private String Number;
 
-    public User(String StudentID, String password, String name,
-            String grade, String academy, String sex, String number) {
-        this.StudentID = StudentID;
+    public Admin(String teacherID, String password, String name, String academy, String sex, String number) {
+        TeacherID = teacherID;
         this.password = password;
         this.name = name;
-        this.Grade = grade;
-        this.Academy = academy;
-        this.Sex = sex;
-        this.phoneNumber = number;
+        Academy = academy;
+        Sex = sex;
+        Number = number;
     }
 
-    public String getStudentID() {
-        return StudentID;
+    public String getTeacherID() {
+        return TeacherID;
     }
 
-    public void setStudentID(String StudentID) {
-        this.StudentID = StudentID;
+    public void setTeacherID(String teacherID) {
+        TeacherID = teacherID;
     }
 
     public String getPassword() {
@@ -61,14 +51,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getGrade() {
-        return Grade;
-    }
-
-    public void setGrade(String grade) {
-        Grade = grade;
     }
 
     public String getAcademy() {
@@ -88,11 +70,11 @@ public class User {
     }
 
     public String getNumber() {
-        return phoneNumber;
+        return Number;
     }
 
-    public void setNumber(String phonenumber) {
-        phoneNumber = phonenumber;
+    public void setNumber(String number) {
+        Number = number;
     }
 }
 

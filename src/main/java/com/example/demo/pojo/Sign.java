@@ -1,17 +1,14 @@
-package com.zed.demo.pojo;
+package com.example.demo.pojo;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @ApiModel("打卡表")
 @Data
 
-public class sign{
+public class Sign {
     @ApiModelProperty(value ="学生ID")
     private String StudentID;
     @ApiModelProperty(value ="姓名")
@@ -23,7 +20,7 @@ public class sign{
     @ApiModelProperty(value ="签到地点")
     private String Position;
 
-    public sign(String studentID, String name, String date, String signStatus, String position) {
+    public Sign(String studentID, String name, String date, String signStatus, String position) {
         StudentID = studentID;
         this.name = name;
         this.date = date;

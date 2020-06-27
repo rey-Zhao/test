@@ -1,33 +1,30 @@
-package com.zed.demo.controller;
+package com.example.demo.api;
 
 
-import com.sun.net.httpserver.Authenticator;
+import com.example.demo.pojo.Admin;
+import com.example.demo.pojo.Interinfo;
+import com.example.demo.pojo.Sign;
+import com.example.demo.pojo.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import com.zed.demo.pojo.User;
-import com.zed.demo.pojo.admin;
-import com.zed.demo.pojo.interinfo;
-import com.zed.demo.pojo.sign;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.HtmlUtils;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @Api(value = "实习信息管理",description = "综设二的接口信息")
 public class UserController {
     //模拟数据库
-    public static admin admin = new admin("111111","123456",
+    public static Admin admin = new Admin("111111","123456",
             "admin","软件","女","15437829541");
     public static List<User> users = new ArrayList<>();
     static{
@@ -40,33 +37,33 @@ public class UserController {
         users.add(new User("2018091608032","123456","周泽楷",
                 "2018级","软件","男","18074689164"));
     }
-    public static List<interinfo> interinfos = new ArrayList<>();
+    public static List<Interinfo> interinfos = new ArrayList<>();
     static{
-        interinfos.add(new interinfo("2018091608031","黄少天","已登记",
+        interinfos.add(new Interinfo("2018091608031","黄少天","已登记",
                 "已实习","蓝雨俱乐部", "广州市天河区",
                 "2020.6.1","2020.7.1","已注册","广州市白云区"));
 
-        interinfos.add(new interinfo("2018091608030","喻文州","已登记",
+        interinfos.add(new Interinfo("2018091608030","喻文州","已登记",
                 "已实习","蓝雨俱乐部", "广州市天河区",
                 "2020.6.1","2020.7.1","已注册","广州市白云区"));
 
-        interinfos.add(new interinfo("2018091608011","叶修","已登记",
+        interinfos.add(new Interinfo("2018091608011","叶修","已登记",
                 "已实习","蓝雨俱乐部", "北京市朝阳区",
                 "2020.6.1","2020.7.1","已注册","北京市西城区"));
 
-        interinfos.add(new interinfo("2018091608032","周泽楷","已登记",
+        interinfos.add(new Interinfo("2018091608032","周泽楷","已登记",
                 "已实习","轮回俱乐部", "上海市浦东区",
                 "2020.6.1","2020.7.1","已注册","上海市黄埔区"));
     }
-    public static List<sign> signs = new ArrayList<>();
+    public static List<Sign> signs = new ArrayList<>();
     static{
-        signs.add(new sign("2018091608031","黄少天","7:05",
+        signs.add(new Sign("2018091608031","黄少天","7:05",
                 "已签到","广州市"));
-        signs.add(new sign("2018091608030","喻文州","7:43",
+        signs.add(new Sign("2018091608030","喻文州","7:43",
                 "已签到","广州市"));
-        signs.add(new sign("2018091608011","叶修","",
+        signs.add(new Sign("2018091608011","叶修","",
                 "未签到",""));
-        signs.add(new sign("2018091608032","周泽楷","",
+        signs.add(new Sign("2018091608032","周泽楷","",
                 "未签到",""));
     }
 
@@ -130,13 +127,13 @@ public class UserController {
 
     @ApiOperation(value = "查询学生实习信息",notes = "根据ID查询某个学生的实习信息")
     @GetMapping("/userINTE/{id}")
-    public interinfo getUserById2(@ApiParam("学生ID")@PathVariable("id") String StudentID){
+    public Interinfo getUserById2(@ApiParam("学生ID")@PathVariable("id") String StudentID){
         return interinfos.get(3);
     }
 
     @ApiOperation(value = "查询学生签到信息",notes = "根据ID查询某个学生的签到信息")
     @GetMapping("/userSIGN/{id}")
-    public sign getUserById3(@ApiParam("学生ID")@PathVariable("id") String StudentID){
+    public Sign getUserById3(@ApiParam("学生ID")@PathVariable("id") String StudentID){
         return signs.get(3);
     }
 
@@ -148,13 +145,13 @@ public class UserController {
 
     @ApiOperation(value = "添加学生实习信息",notes = "根据传入的学生信息添加实习信息")
     @PostMapping("/addUserINTE")
-    public Object addINTE(interinfo interinfo){
+    public Object addINTE(Interinfo interinfo){
         return interinfos.add(interinfo);
     }
 
     @ApiOperation(value = "添加签到表",notes = "根据传入的学生信息添加实习信息")
     @PostMapping("/addUserSIGN")
-    public Object addSIGN(sign sign){
+    public Object addSIGN(Sign sign){
         return signs.add(sign);
     }
 
